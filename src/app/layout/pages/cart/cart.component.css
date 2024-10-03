@@ -1,0 +1,13 @@
+.bgGray{
+
+    background-color: #F7F7F7;
+}
+
+.delete{
+    font-size: 28px;
+    transition: .5s ease;
+}
+
+.delete:hover{
+    font-size: 36px;
+}

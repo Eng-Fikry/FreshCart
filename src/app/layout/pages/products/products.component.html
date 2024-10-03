@@ -1,0 +1,32 @@
+
+<div class=" py-4">
+    <input  placeholder="search product" class="form-control w-50 mx-auto" [(ngModel)]="word" type="text">
+</div>
+
+<div class="container-fluid my-3">
+    <div class="row ">
+        @for (item of _products | search: word; track $index) {
+            <div  class="col-lg-3 col-md-6 col-sm-12 py-3  shadow-sm rounded-2 cardd overflow-hidden cursor ">
+                <div class="">
+                    <div [routerLink]="['/productDetails',item._id]" class="">
+                        <img class="w-100" [src]="item.imageCover" alt="">
+                    <p class="main-text">{{item.category.name}}</p>
+                    <p>{{item.title}}</p>
+                    <div class="d-flex justify-content-between">
+                        <p>{{item.price |currency:"EGP "}} </p>
+                        <div class="d-flex gap-2">
+                            <i class="fa-solid fa-star py-1"></i>
+                            <p>{{item.ratingsAverage}}</p>
+                        </div>
+    
+                    </div>
+                    </div>
+                    <button (click)="addToCart(item._id)" class="btn main-color main-color-hover text-white w-100">{{'Add to Cart' | translate}}</button>
+    
+                </div>
+            </div>
+        }
+
+    </div> 
+    
+</div>   

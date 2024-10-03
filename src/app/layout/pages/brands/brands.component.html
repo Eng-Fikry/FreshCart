@@ -1,0 +1,20 @@
+<div class="container-fluid my-3">
+    <div class="row ">
+        @for (item of brands ; track $index) {
+            <div  class="col-lg-3 col-md-6 col-sm-12 py-3  shadow-sm rounded-2 cardd overflow-hidden cursor ">
+                <div class="">
+                    <div  class="">
+                        <img class="w-100" [src]="item.image" alt="">
+                    <p class="main-text">{{item.name}}</p>
+                    <p>{{item.slug}}</p>
+
+                    </div>
+                    
+    
+                </div>
+            </div>
+        }
+
+    </div> 
+    
+</div>   

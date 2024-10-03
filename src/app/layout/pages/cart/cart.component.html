@@ -1,0 +1,49 @@
+
+@if (empty=="") {
+    <p class="text-center fs-2 main-text mt-3">{{'Your cart' | translate}}</p>
+
+}
+@if (empty=="is empty") {
+    <p class="text-center fs-2 main-text mt-3">{{'Your cart is empty' | translate}}</p>
+
+}
+
+<div class="d-flex justify-content-around w-75 mx-auto ">
+    <p class="fw-medium fs-4">{{'Items' |translate}}: {{cartItems.numOfCartItems}}</p>
+    <button [disabled]="cartItems.numOfCartItems==0" (click)="cleaCart()" class="btn btn-danger">{{'Clear Cart' | translate}}</button>
+    <button [routerLink]="['/checkout',cartItems.cartId]" [disabled]="cartItems.numOfCartItems==0"  class="btn main-color main-color-hover text-white">{{'ORDER' | translate}}</button>
+    <p class="fw-medium fs-4">{{'Total Price' | translate}}: {{cartItems.data.totalCartPrice | currency:"EGP "}}</p>
+</div>
+
+
+<div class="container">
+    <div class="row flex-column my-3 gap-3 w-100 mx-auto">
+        @for (item of cartItems.data.products; track $index) {
+            <div class="d-flex bgGray justify-content-between p-3 rounded-3">
+
+                <div class="">
+                    <div class="d-flex gap-3">
+                        <img class="w-25" [src]="item.product.imageCover" alt="">
+                        <div class="align-self-center">
+                            <p class="main-text fs-2">{{item.product.title}}</p>
+                            <p class="fs-4 fw-bold">{{item.price | currency:"EGP "}}</p>
+                            <i (click)="removeItem(item.product._id)" class="fa-solid fa-trash delete text-danger cursor"></i>
+                        </div>
+                    </div>
+                    
+                </div>
+    
+                <div class="align-self-center d-flex gap-3 align-items-center">
+                    
+                    <button (click)="updateCount(item.product._id,item.count-1)" class="border-0 bg-transparent" [disabled]="item.count==1"><i  class="fa-solid fa-square-minus fs-2 cursor main-text main-text-hover"></i></button>
+                    <span>{{item.count}}</span>
+                    
+                    <i  (click)="updateCount(item.product._id,item.count+1)" class="fa-solid fa-square-plus fs-2 cursor main-text main-text-hover"></i>
+                    
+                </div>
+    
+            </div>
+        }
+        
+    </div>
+</div>

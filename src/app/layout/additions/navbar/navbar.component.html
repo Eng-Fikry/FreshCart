@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+    <div class="container ">
+      <a class="navbar-brand" routerLink="home"><img src="assets/images/freshcart-logo.svg" alt=""></a>
+      <button class="navbar-toggler r " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation ">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+        <div class="navbar-nav ">
+          @if(isLogin){
+            
+            <a class="nav-link d-flex justify-content-center" routerLinkActive="text-white main-color main-color-hover rounded-5" routerLink="home">{{'Home' | translate}}</a>
+            <a class="nav-link d-flex justify-content-center" routerLinkActive="text-white main-color main-color-hover rounded-5" routerLink="cart">{{'Cart' | translate}}</a>
+            <a class="nav-link d-flex justify-content-center" routerLinkActive="text-white main-color main-color-hover rounded-5" routerLink="products">{{'Products' | translate}}</a>
+            <a class="nav-link d-flex justify-content-center" routerLinkActive="text-white main-color main-color-hover rounded-5" routerLink="brands">{{'Brands' | translate}}</a>
+            <a class="nav-link d-flex justify-content-center" routerLinkActive="text-white main-color main-color-hover rounded-5" routerLink="categories">{{'Categories' | translate}}</a>
+          }
+        </div>
+
+        <div class="d-flex gap-4 align-items-center justify-content-center">
+          <i class="fa-brands main-text-hover fa-facebook cursor"></i>
+          <i class="fa-brands main-text-hover fa-youtube cursor"></i>
+          <i class="fa-brands main-text-hover fa-instagram cursor"></i>
+          <i class="fa-brands main-text-hover fa-linkedin cursor"></i>
+          <i class="fa-brands main-text-hover fa-twitter cursor"></i>
+          @if (!isLogin) {
+            <a class="nav-link"  routerLink="login">{{'Login' |translate}}</a>
+            <a class="nav-link"  routerLink="register">{{'Register' | translate}}</a>
+          }
+          @if (isLogin) {
+            <i class="main-text-hover fa-solid fa-cart-shopping cursor fs-4" routerLink="cart">
+              <span class="fs-6 main-text">{{_itmsService.number.getValue()}}</span>
+            </i>
+            
+            <a (click)="logout()" class="nav-link cursor"  >{{'Logout' | translate}}</a>
+            <a (click)="changeLang('en')" class="nav-link cursor"  >En</a>
+            <a (click)="changeLang('ar')" class="nav-link cursor"  >Ar</a>
+          }
+        </div>
+
+      </div>
+    </div>
+  </nav>

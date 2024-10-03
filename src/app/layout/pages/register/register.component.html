@@ -1,0 +1,135 @@
+<div class="my-5 mx-auto w-75">
+
+    <form [formGroup]="register" (ngSubmit)="test()">
+
+        <h3>{{'Register'|translate}}</h3>
+
+        @if (errorMessage) {
+            <h2 class="alert alert-danger">{{errorMessage}}</h2>
+        }
+
+        <div class="name my-3">
+            <label class="cursor" for="name">{{'name'|translate}}</label>
+            <input id="name" class="form-control" formControlName="name">
+            @if(register.get('name')?.errors&& register.get('name')?.touched){
+                <div class="alert alert-danger">
+                    @if(register.get('name')?.errors?.['required']){
+                        <p>{{'name is required' |translate}}</p>
+
+                    }
+                    @else if(register.get('name')?.errors?.['minlength']){
+
+                        <p>{{'name should be more than or equal 3'|translate}}</p>
+
+                    }
+                    @else if(register.get('name')?.errors?.['maxlength']){
+
+                        <p>{{"name should be less than or equal 20" |translate}}</p>
+                    }
+                
+
+                </div>
+            }
+            
+        </div>
+        <div class="email my-3">
+            <label class="cursor" for="email">{{'email'|translate}}</label>
+            <input id="email" class="form-control" formControlName="email">
+
+            @if(register.get('email')?.errors&& register.get('email')?.touched){
+                <div class="alert alert-danger">
+                    @if(register.get('email')?.errors?.['required']){
+                        <p>{{'email is required'|translate}}</p>
+
+                    }
+                    
+                    @else if(register.get('email')?.errors){
+                        <p>{{'enter vaild email'|translate}}</p>
+
+                    }
+                    
+                
+
+                </div>
+            }
+        </div>
+        <div class="phone my-3">
+            <label class="cursor" for="phone">{{'phone'|translate}}</label>
+            <input id="phone" class="form-control" formControlName="phone">
+            @if(register.get('phone')?.errors&& register.get('phone')?.touched){
+                <div class="alert alert-danger">
+                    @if(register.get('phone')?.errors?.['required']){
+                        <p>{{"phone is required"|translate}}</p>
+
+                    }
+                   
+                    @else if(register.get('phone')?.errors?.['pattern']){
+                        <p>{{"enter vaild phone"|translate}}</p>
+
+                    }
+                    
+                
+
+                </div>
+            }
+        </div>
+        <div class="password my-3">
+            <label class="cursor" for="password">{{'password'|translate}}</label>
+            <input id="password" type="password" class="form-control" formControlName="password">
+            @if(register.get('password')?.errors&& register.get('password')?.touched){
+                <div class="alert alert-danger">
+                    @if(register.get('password')?.errors?.['required']){
+                        <p>{{"password is required"|translate}}</p>
+
+                    }
+                   
+                    @else if(register.get('password')?.errors?.['pattern']){
+                        <p>{{"enter vaild password"|translate}}</p>
+
+                    }
+                    
+                
+
+                </div>
+            }
+        </div>
+        <div class="rePassword my-3">
+            <label class="cursor" for="rePassword">{{'RePassword'|translate}}</label>
+            <input id="rePassword" type="password" class="form-control" formControlName="rePassword">
+            @if(register.get('rePassword')?.errors&& register.get('rePassword')?.touched){
+                <div class="alert alert-danger">
+                    @if(register.get('rePassword')?.errors?.['required']){
+                        <p>{{"rePassword is required"|translate}}</p>
+
+                    }
+                   
+                    @else if(register.get('rePassword')?.errors?.['pattern']){
+                        <p>{{"enter vaild rePassword"|translate}}</p>
+
+                    }
+                    
+                    
+                </div>
+            }
+            
+        </div>
+        @if(register.errors?.['missMatched'] && register.get('rePassword')?.touched){
+                
+            <div class="alert alert-danger">
+
+                <p>{{"password and repassword not matche"|translate}}</p>
+            </div>
+        }
+        
+
+        <button [disabled]="register.invalid"   class="btn main-color main-color-hover text-white d-block ms-auto " type="submit">{{'Sumbit'|translate}} 
+
+            @if(load){<i class="fa-solid fa-spinner fa-spin"></i>}
+            
+        
+        </button>
+    
+    
+    </form>
+
+</div>

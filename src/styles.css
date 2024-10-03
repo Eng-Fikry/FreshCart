@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+.cursor{
+    cursor: pointer;
+}
+
+.main-color{
+    background-color: #0aad0a !important;
+}
+
+.main-color-hover:hover{
+    background-color: #099f09 !important;
+}
+
+.main-text-hover:hover{
+    color: #099f09 !important;
+}
+.main-text{
+    color: #099f09 !important;
+}
+.fa-star{
+    color: rgb(240, 194, 26);
+}
+
+
+

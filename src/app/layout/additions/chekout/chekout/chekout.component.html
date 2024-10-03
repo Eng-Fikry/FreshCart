@@ -1,0 +1,54 @@
+<div class="name my-3 container">
+
+    <form [formGroup]="checkout" (ngSubmit)="submit()" action="">
+    <div class="">
+        <label class="cursor" for="details">{{'details'|translate}}</label>
+        <input id="details" class="form-control" formControldetails="details">
+        @if(checkout.get('details')?.errors&& checkout.get('details')?.touched){
+        <div class="alert alert-danger">
+            @if(checkout.get('details')?.errors?.['required']){
+                <p>{{"details is required"|translate}}</p>
+
+            }
+        </div>
+    }
+    </div>
+
+    <div class="phone my-3">
+        <label class="cursor" for="phone">{{"phone"|translate}}</label>
+        <input id="phone" class="form-control" formControlName="phone">
+        @if(checkout.get('phone')?.errors&& checkout.get('phone')?.touched){
+            <div class="alert alert-danger">
+                @if(checkout.get('phone')?.errors?.['required']){
+                    <p>{{"phone is required"|translate}}</p>
+
+                }
+               
+                @else if(checkout.get('phone')?.errors?.['pattern']){
+                    <p>{{"enter vaild phone"|translate}}</p>
+
+                }
+                
+            
+
+            </div>
+        }
+    </div>
+
+    <div class="">
+        <label class="cursor" for="city">{{"city"|translate}}</label>
+        <input id="city" class="form-control" formControlcity="city">
+        @if(checkout.get('city')?.errors&& checkout.get('city')?.touched){
+        <div class="alert alert-danger">
+            @if(checkout.get('city')?.errors?.['required']){
+                <p>city is required</p>
+
+            }
+        </div>
+    }
+    </div>
+
+    <button type="submit" class="btn main-color main-color-hover w-100 mt-3 text-white">{{"Submit order"|translate}}</button>
+</form>
+    
+</div>

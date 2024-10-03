@@ -1,0 +1,27 @@
+.cardd{
+    position: relative;
+}
+
+button{
+    position: relative;
+    bottom: -50px;
+    opacity: 0;
+    transition: .5s ease;
+    
+}
+
+.cardd:hover button{
+    bottom: 0px;
+    opacity: 1;
+}
+
+
+
+
+
+.slid{
+    height: 500px;
+    
+}
+
+
